@@ -58,7 +58,7 @@
         description = "Please, provide weight";
         addDescription(description); // adding dynamical description
         break;
-      case "Furniture":
+      case "FURNITURE":
         typeInsert.innerHTML = FURNITURE; //insert new element
         description = "Please, provide dimensions";
         addDescription(description); // adding dynamical description

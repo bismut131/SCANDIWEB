@@ -6,24 +6,24 @@
 		public function __construct($sku, $name, $price, $dimension) {
 			parent::__construct($sku, $name, $price);
 
-			$this->setSize($dimension);
+			$this->setDimension($dimension);
 		}
 
-		public function setdimension($dimension) {
+		public function setDimension($dimension) {
 			$this->dimension = $dimension;
 		}
 
-		public function getdimension() {
-			return $this->dimension;
-		}
+		// public function getDimension() {
+		// 	return $this->dimension;
+		// }
 
-		public function getOption() {
-			return $this->getdimension();
-		}
+		// public function getOption() {
+		// 	return $this->getDimension();
+		// }
 
-		public function getType() {
-			return 'FURNITURE';
-		}
+		// public function getType() {
+		// 	return 'FURNITURE';
+		// }
 	}
 
 ?>
