@@ -1,0 +1,12 @@
+.body_grid {
+  display: grid;
+  grid-template-rows: 3.4rem minmax(20rem, auto) auto;
+}
+
+main {
+  grid-row: 2 / 3;
+}
+
+footer {
+  grid-row: 3 / 4;
+}

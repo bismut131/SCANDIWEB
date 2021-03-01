@@ -1,0 +1,14 @@
+@import "_variables.scss";
+
+footer {
+  width: 100%;
+  height: 10vh;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background-color: map-get($map: $colors, $key: secondary);
+  color: map-get($map: $colors, $key: main);
+  padding: 2.5rem;
+  p {
+    text-align: center;
+  }
+}

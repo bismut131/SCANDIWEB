@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
+@import "../shared_scss/_variables.scss";
+
+body {
+  background-color: #dcdcdc;
+}
+
+main {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  padding: 0;
+  margin: 1rem;
+}
+.product-list {
+  margin: 2rem;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  align-items: center;
+}
+
+.product {
+  position: relative;
+  color: map-get($map: $colors, $key: main);
+  background-color: map-get($map: $colors, $key: secondary);
+  padding: 2rem;
+  border: 2px solid map-get($map: $colors, $key: tertiary);
+  border-radius: 1rem;
+  vertical-align: middle;
+  p {
+    margin: 1rem;
+    text-align: center;
+  }
+}
+
+.checkbox {
+  position: absolute;
+  top: 1rem;
+  right: 0.9rem;
+  transform: scale(1.5);
+  outline: none;
+}
