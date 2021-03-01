@@ -16,7 +16,7 @@ async function postData(url = "") {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-postData("http://localhost/SCANDIWEB_muko/PHP/fetch_items.php").then((data) => {
+postData("http://localhost/SCANDIWEB_muko/SCANDIWEB//PHP/fetch_items.php").then((data) => {
   // JSON data parsed by `data.json()` call
 
   for (let i = 0; i < data.length; i++) {
