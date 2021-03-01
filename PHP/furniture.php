@@ -13,17 +13,17 @@
 			$this->dimension = $dimension;
 		}
 
-		// public function getDimension() {
-		// 	return $this->dimension;
-		// }
+		public function getDimension() {
+			return $this->dimension;
+		}
 
-		// public function getOption() {
-		// 	return $this->getDimension();
-		// }
+		public function getOption() {
+			return $this->getDimension();
+		}
 
-		// public function getType() {
-		// 	return 'FURNITURE';
-		// }
+		public function getType() {
+			return 'Furniture';
+		}
 	}
 
 ?>
