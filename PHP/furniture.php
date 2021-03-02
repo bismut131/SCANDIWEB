@@ -3,7 +3,7 @@
 		protected $dimension;
 
 		//Configures MySQL base connection properties
-		public function __construct($sku, $name, $price, $dimension) {
+		public function __construct($sku, $name, $price, $type, $dimension) {
 			parent::__construct($sku, $name, $price);
 
 			$this->setDimension($dimension);
@@ -22,8 +22,12 @@
 		}
 
 		public function getType() {
-			return 'Furniture';
+			return 'FURNITURE';
 		}
+
+		public function setType($type) {
+            $this->type = $type;
+        }
 	}
 
 ?>

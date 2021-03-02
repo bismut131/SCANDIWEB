@@ -2,7 +2,7 @@
     class Book extends Product {
         protected $weight;
 
-        public function __construct ($sku, $name, $price, $weight){
+        public function __construct ($sku, $name, $price, $type, $weight){
             parent::__construct($sku, $name, $price);
 
             $this->setWeight($weight);
@@ -22,6 +22,10 @@
 
         public function getType() {
             return "BOOK";
+        }
+
+        public function setType($type) {
+            $this->type = $type;
         }
     }
 

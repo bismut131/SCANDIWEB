@@ -6,8 +6,14 @@ require_once 'product.php';
 require_once 'dvd.php';
 require_once 'book.php';
 require_once 'furniture.php';
+require_once 'database.php';
+require_once 'model.php';
 
-   var_dump ($_POST);
+
+ini_set("display_errors", 1);
+ini_set("track_errors", 1);
+ini_set("html_errors", 1);
+error_reporting(E_ALL);
 
    $sku = $_POST['sku'];
    $name = $_POST['name'];
@@ -18,12 +24,12 @@ require_once 'furniture.php';
    if($type === "DVD"){
 
       $size = $_POST['size'];
-      $item = new DVD($sku, $name, $price, $size);
+      $item = new DVD($sku, $name, $price, $type, $size);
    
    } else if($type === "BOOK") {
    
       $weight = $_POST["weight"];
-      $item = new BOOK($sku, $name, $price, $weight);
+      $item = new BOOK($sku, $name, $price, $type, $weight);
    
    } else if ($type === "FURNITURE") {
    
@@ -31,23 +37,11 @@ require_once 'furniture.php';
       $width = $_POST["width"];
       $length = $_POST["length"];
       $dimension = $height . 'x' . $width . 'x' . $height;
-      $item = new Furniture ($sku, $name, $price, $dimension);
+      $item = new Furniture ($sku, $name, $price, $type, $dimension);
    }
 
-   $optional =  $item->getOption();
 
-   echo $optional;
-
-   $sql = "INSERT INTO `items` (`sku`, `name`, `price`, `type`, `size`) VALUES ('$sku','$name','$price','$type', '$optional')"; 
-
-   if ($connection->query($sql) === TRUE) {
-      echo "New record created successfully";
-   } else {
-      echo "Error: " . $sql . "<br>" . $connection->error;
-   }
-
-   require_once 'fetch_items.php';
-
-   $connection->close();
+   $model = new Model();
+   $model->AddProduct($item);
 
 ?>

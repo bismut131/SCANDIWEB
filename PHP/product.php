@@ -10,11 +10,11 @@
             $this->setPrice($price);
         }
 
-        public function getSKU() {
+        public function getSku() {
             return $this->sku;
         }
 
-        public function setSKU($sku) {
+        public function setSku($sku) {
             $this->sku = $sku;
         }
 
@@ -27,7 +27,7 @@
         }
 
         public function getPrice() {
-            return $this->$name;
+            return $this->price;
         }
 
         public function setPrice($price) {
