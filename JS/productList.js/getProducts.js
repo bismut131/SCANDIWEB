@@ -29,7 +29,7 @@ postData("http://localhost/SCANDIWEB_muko/SCANDIWEB//PHP/fetch_items.php").then(
     } else if (data[i].type === "FURNITURE") {
       var infoProduct = data[i].dimension;
     }
-    console.log(infoProduct);
+
     const product = `<article class="product">
     <input type="checkbox" class="checkbox" />
     <p class="sku">${data[i].sku}</p>
@@ -38,7 +38,6 @@ postData("http://localhost/SCANDIWEB_muko/SCANDIWEB//PHP/fetch_items.php").then(
     <p class="attribute">${infoProduct}</p>
     </article>`;
     const productList = document.querySelector(".product-list");
-    console.log(productList);
     productList.innerHTML += product;
   }
 });

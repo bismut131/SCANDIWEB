@@ -1,7 +1,5 @@
 <?php 
 
-require_once "login.php";
-require_once 'connecting.php';
 require_once 'product.php';
 require_once 'dvd.php';
 require_once 'book.php';

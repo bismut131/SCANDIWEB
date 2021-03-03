@@ -1,18 +1,19 @@
 <?php 
 
-require_once 'login.php';
-require_once 'connecting.php';
+// require_once 'login.php';
+// require_once 'connecting.php';
+require_once 'database.php';
+require_once 'model.php';
 
-$query = "SELECT * FROM items";
-$result = $connection->query($query);
 
-$data = array();
+ini_set("display_errors", 1);
+ini_set("track_errors", 1);
+ini_set("html_errors", 1);
+error_reporting(E_ALL);
 
-while($row = $result -> fetch_assoc()) {
-    array_push($data,$row);
-}
+$getItems = new Model();
 
-echo json_encode($data);
+echo json_encode($getItems->select());
 
 
 ?>
