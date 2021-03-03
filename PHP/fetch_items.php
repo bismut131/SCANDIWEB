@@ -1,7 +1,5 @@
 <?php 
 
-// require_once 'login.php';
-// require_once 'connecting.php';
 require_once 'database.php';
 require_once 'model.php';
 

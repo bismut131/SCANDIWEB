@@ -13,6 +13,12 @@
             $this->types = ['DVD' => 'size', 'BOOK' => 'weight', 'FURNITURE' => 'dimension'];
         }
 
+        public function showAlert($alert) {
+            header('Content-type:application/json');
+			echo json_encode($alert);
+			die();
+        }
+
         public function select () {
             $this->DB->query('SELECT * FROM items');
             $result = $this->DB->getAll();
@@ -24,6 +30,11 @@
             }
 
             return $data;
+        }
+
+        public function getProductFromBase($sku) {
+            $this->DB->query("SELECT * FROM items WHERE sku=?", $sku);
+            return $this->DB->getAll();
         }
 
         public function AddProduct($Product) {

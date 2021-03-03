@@ -38,8 +38,12 @@ error_reporting(E_ALL);
       $item = new Furniture ($sku, $name, $price, $type, $dimension);
    }
 
-
    $model = new Model();
+
+   if(count($model->getProductFromBase($sku)) != 0) {
+      $model->showAlert(array('error' => 'Product with this SKU exists'));
+   }
+
    $model->AddProduct($item);
 
 ?>
