@@ -41,3 +41,5 @@ postData("http://localhost/SCANDIWEB_muko/SCANDIWEB/PHP/fetch_items.php").then((
     productList.innerHTML += product;
   }
 });
+
+

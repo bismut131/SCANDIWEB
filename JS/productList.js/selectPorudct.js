@@ -39,7 +39,7 @@ window.setTimeout(() => {
             console.error(error);
         });
     })
-},1000)
+},300)
 
 
 

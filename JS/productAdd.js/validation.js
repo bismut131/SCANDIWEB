@@ -22,10 +22,16 @@
   );
 })();
 
-// SKU NAME and other fields should contain just alphabet
 
-//price should onyl contain numbers and type switcher tabs
 
-//on submit check all the fields
-// so need eventlistener for submit
-// sku not more than 9 chars
+// function checkValidity () {
+//     const sku = 
+// }
+
+// sku not more than 9 chars and not empty ; onyl alphabet and numbers
+// name only alphabet and numbers
+// price only number+
+
+//size only number' 
+//weight only number 
+//height widht length only number
