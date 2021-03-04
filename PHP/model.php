@@ -14,9 +14,8 @@
         }
 
         public function showAlert($alert) {
-            header('Content-type:application/json');
-			echo json_encode($alert);
-			die();
+			echo $alert;
+            die();
         }
 
         public function select () {
@@ -28,7 +27,7 @@
             foreach($result as $value) {
                 array_push($data,$value);
             }
-
+            
             return $data;
         }
 
@@ -41,6 +40,11 @@
             
             $this->DB->query("INSERT INTO `items` (`sku`, `name`, `price`, `type`, ". $this->types[$Product->getType()] .")". "VALUES" ."(?, ?, ?, ?, ?)",
                                 $Product->getSku(), $Product->getName(), $Product->getPrice(), $Product->getType(),$Product->getOption());
+            $this->DB->execute();
+        }
+
+        public function deleteProducts($sku) {
+            $this->DB->query('DELETE FROM items WHERE sku IN (?)', implode(',', $sku));
             $this->DB->execute();
         }
     }

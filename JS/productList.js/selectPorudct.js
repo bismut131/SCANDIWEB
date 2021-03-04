@@ -22,6 +22,11 @@ window.setTimeout(() => {
 
         fetch("PHP/deleteItem.php", {
             method: "post",
+            mode: "same-origin",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json"
+              },
             body: JSON.stringify(sku),
         })
         .then(function (response) {
@@ -30,6 +35,9 @@ window.setTimeout(() => {
         .then(function (text) {
             console.log(text);
         })
+        .catch(function (error) {
+            console.error(error);
+        });
     })
 },1000)
 
