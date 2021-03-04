@@ -28,3 +28,4 @@
 
 //on submit check all the fields
 // so need eventlistener for submit
+// sku not more than 9 chars
