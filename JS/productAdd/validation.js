@@ -7,11 +7,11 @@
 
   // Fetch the form we want to apply custom Bootstrap validation styles to
   const form = document.querySelector(".needs-validation");
-
+  console.log(form);
   form.addEventListener(
     "submit",
     function (event) {
-      if (!form.checkValidity()) {
+      if (!checkValidity()) {
         event.preventDefault();
         event.stopPropagation();
       }
@@ -24,9 +24,10 @@
 
 
 
-// function checkValidity () {
-//     const sku = 
-// }
+function checkValidity () {
+  const sku = document.querySelector("#sku");
+  console.log(sku);
+};
 
 // sku not more than 9 chars and not empty ; onyl alphabet and numbers
 // name only alphabet and numbers
