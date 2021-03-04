@@ -44,7 +44,8 @@
         }
 
         public function deleteProducts($sku) {
-            $this->DB->query('DELETE FROM items WHERE sku IN (?)', implode(',', $sku));
+            $placeholders = implode(',',array_fill(0, count($sku), '?') );
+            $this->DB->query("DELETE FROM items WHERE sku IN ($placeholders)" , ...$sku);
             $this->DB->execute();
         }
     }

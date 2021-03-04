@@ -1,7 +1,6 @@
 <?php 
-
-    require_once 'database.php';
     require_once 'model.php';
+    require_once 'database.php';
 
     $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
