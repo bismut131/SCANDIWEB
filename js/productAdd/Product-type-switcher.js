@@ -76,7 +76,7 @@ const deleteTypes = function (types) {
 const addDescription = function (description) {
   // 1. we need divs of new elements and feedback div to write description
   const inputFields = document.querySelectorAll(".description");
-  const descriptionFields = document.querySelector(".feedback");
+  const descriptionFields = document.getElementsByClassName("feedback")[1];
 
   // 2. focus event add desrciption
   for (const [key, value] of Object.entries(inputFields)) {
