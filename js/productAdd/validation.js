@@ -14,10 +14,10 @@
       if (!checkValidity()) {
         event.preventDefault();
         event.stopPropagation();
+        form.classList.add("was-validated");
       } else {
         window.location.replace(host + "/index.html");
       }
-      form.classList.add("was-validated");
     },
     true
   );
