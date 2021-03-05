@@ -62,11 +62,3 @@ function checkValidity () {
 
   return true;
 };
-
-// sku not more than 9 chars and not empty ; onyl alphabet and numbers
-// name only alphabet and numbers
-// price only number+
-
-//size only number' 
-//weight only number 
-//height widht length only number
