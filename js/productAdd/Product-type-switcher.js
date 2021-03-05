@@ -78,8 +78,6 @@ const addDescription = function (description) {
   const inputFields = document.querySelectorAll(".description");
   const descriptionFields = document.querySelector(".feedback");
 
-  console.log(Object.entries(inputFields));
-
   // 2. focus event add desrciption
   for (const [key, value] of Object.entries(inputFields)) {
     value.addEventListener("focus", function () {
