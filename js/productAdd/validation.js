@@ -40,7 +40,8 @@ function checkValidity () {
 
   if(  sku.value.length === 0 
     || name.value.length === 0 
-    || price.value.length === 0) return false;
+    || price.value.length === 0
+    || type.value === "") return false;
 
   if(type.value === "DVD") {
     const size = document.querySelector("#size");
