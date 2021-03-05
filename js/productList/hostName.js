@@ -1,0 +1,1 @@
+const host = "http://localhost/SCANDIWEB_muko/SCANDIWEB/";
