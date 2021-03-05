@@ -8,7 +8,7 @@ addItemForm.addEventListener("submit", function (e) {
   const sendFormData = new FormData(this);
 
   fetch("PHP/addItem.php", {
-    method: "post",
+    method: "POST",
     body: sendFormData,
   })
     .then(function (response) {
