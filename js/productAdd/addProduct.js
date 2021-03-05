@@ -15,9 +15,6 @@ addItemForm.addEventListener("submit", function (e) {
     .then(function (text) {
       alert(text);
     })
-    // .then(function(){
-    //   window.location.replace("http://localhost/SCANDIWEB_muko/SCANDIWEB/index.html");
-    // })
     .catch(function (error) {
       console.error(error);
     });

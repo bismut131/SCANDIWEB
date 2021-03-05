@@ -10,11 +10,11 @@
     
     $sku = json_decode($content, true);
 
-    var_dump($sku);
-
     $deleteItems = new Model();
 
     $deleteItems->deleteProducts($sku);
+    
+    echo json_encode($deleteItems->select());
 
     }
 ?>

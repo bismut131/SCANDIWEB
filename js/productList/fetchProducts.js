@@ -16,30 +16,8 @@ async function postData(url = "") {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-postData("http://localhost/SCANDIWEB_muko/SCANDIWEB/PHP/fetch_items.php").then((data) => {
-  // JSON data parsed by `data.json()` call
+postData("http://localhost/SCANDIWEB_muko/SCANDIWEB/PHP/fetch_items.php").then((data) => getItemstoProductlist(data));
 
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].type === "DVD") {
-      var infoProduct = data[i].size;
-      infoProduct += "MB";
-    } else if (data[i].type === "BOOK") {
-      var infoProduct = data[i].weight;
-      infoProduct += "KG";
-    } else if (data[i].type === "FURNITURE") {
-      var infoProduct = data[i].dimension;
-    }
-    
-    const product = `<article class="product">
-    <input type="checkbox" class="checkbox" />
-    <p class="sku">${data[i].sku}</p>
-    <p class="name">${data[i].name}</p>
-    <p class="price">${data[i].price}$</p>
-    <p class="attribute">${infoProduct}</p>
-    </article>`;
-    const productList = document.querySelector(".product-list");
-    productList.innerHTML += product;
-  }
-});
+
 
 
