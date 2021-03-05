@@ -31,31 +31,29 @@ function checkValidity () {
   const price = document.querySelector("#price");
   const type = document.querySelector('#type-switcher');
 
-  if(sku.value.length > 9 || sku.value.length === 0 
+  //explicitly for showing allert 
+  if(sku.value.length > 9) {
+    const feedback = document.querySelector(".feedback"); 
+    feedback.textContent = "SKU must be less than 9 charachters!";
+    return false;
+  }
+
+  if(  sku.value.length === 0 
     || name.value.length === 0 
     || price.value.length === 0) return false;
 
-  console.log(name.value.length,price.value.length,type.value.length);
- 
-
   if(type.value === "DVD") {
     const size = document.querySelector("#size");
-    console.log(size);
-    console.log(size.value.length);
     if(size.value.length === 0) return false;
   }
   else if (type.value === "BOOK") {
     const weight = document.querySelector("#weight");
-    console.log(weight);
-    console.log(weight.value.length);
     if(weight.value.length === 0) return false;
   }
   else if (type.value === "FURNITURE") {
     const height = document.querySelector('#height');
     const width = document.querySelector('#width');
     const length = document.querySelector('#length');
-
-    console.log(height.value.length,width.value.length,length.value.length);
 
     if(height.value.length === 0 || width.value.length === 0 || length.value.length === 0) return false;
   }

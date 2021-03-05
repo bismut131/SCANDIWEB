@@ -6,12 +6,9 @@ function addEventListenerToItems () {
             const itemSku = event.target.nextSibling.nextSibling.textContent;
             if(event.target.checked == true){
                 sku.push(itemSku);
-                console.log(sku);
             } else {
                 sku.splice(sku.indexOf(itemSku),1);
-                console.log(sku);
             }
         })
     }
-    console.log(itemCheckbox);
 }
