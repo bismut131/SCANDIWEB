@@ -16,10 +16,6 @@ async function postData(url = "") {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-
-
-postData(host + "/PHP/fetch_items.php").then((data) => getItemstoProductlist(data));
-
-
-
-
+postData(host + "/PHP/fetchItems.php").then((data) =>
+  getItemstoProductlist(data)
+);

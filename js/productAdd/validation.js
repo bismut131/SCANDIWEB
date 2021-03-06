@@ -1,15 +1,28 @@
+"use strict";
 (function () {
-  "use strict";
+  const sku = document.querySelector("#sku");
 
   const form = document.querySelector(".needs-validation");
 
   form.addEventListener(
     "submit",
     function (event) {
-      if (!checkValidity()) {
+      if (
+        // getProductsFromBase().then(function (data) {
+        //   for (const item of data) {
+        //     console.log(sku.value, item["sku"]);
+        //     if (sku.value === item["sku"]) {
+        //       console.log("YES");
+        //       return true;
+        //     }
+        //   }
+        // }) ||
+        !checkValidity()
+      ) {
         event.preventDefault();
         event.stopPropagation();
         form.classList.add("was-validated");
+        console.log("MARI");
       } else {
         window.location.replace(host + "/index.html");
       }
@@ -18,13 +31,22 @@
   );
 })();
 
+console.log(
+  getProductsFromBase().then(function (data) {
+    for (const item of data) {
+      if (sku.value === item["sku"]) {
+        console.log("YES");
+      }
+    }
+    return Promise["PromiseResult"];
+  })
+);
+
 function checkValidity() {
-  const sku = document.querySelector("#sku");
   const name = document.querySelector("#Name");
   const price = document.querySelector("#price");
   const type = document.querySelector("#type-switcher");
 
-  //explicitly for showing allert
   if (sku.value.length > 9) {
     const feedback = document.querySelector(".feedback");
     feedback.textContent = "SKU must be less than 9 charachters!";
