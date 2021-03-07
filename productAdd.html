@@ -60,7 +60,12 @@
               <div class="invalid-feedback">“Please, submit required data”</div>
               <div
                 class="feedback"
-                style="color: #ffa500; font-weight: bold"
+                style="
+                  color: var(--bs-warning);
+                  font-size: 0.875em;
+                  font-family: 'Roboto', sans-serif;
+                  font-weight: 300;
+                "
               ></div>
             </div>
             <div class="mb-3 p-3">
@@ -78,7 +83,7 @@
             <div class="mb-3 p-3">
               <label for="Price" class="form-label">Price($)</label>
               <input
-                type="number"
+                type="text"
                 name="price"
                 class="form-control"
                 id="price"
@@ -86,6 +91,15 @@
                 required
               />
               <div class="invalid-feedback">“Please, submit required data”</div>
+              <div
+                class="feedback"
+                style="
+                  color: var(--bs-warning);
+                  font-size: 0.875em;
+                  font-family: 'Roboto', sans-serif;
+                  font-weight: 300;
+                "
+              ></div>
             </div>
             <div class="mb-3 p-3">
               <label for="type-switcher" class="form-label"
