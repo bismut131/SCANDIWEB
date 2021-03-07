@@ -3,7 +3,13 @@ const addItemForm = document.querySelector(".itemData");
 addItemForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  if (!checkValidity()) return false;
+  if (
+    !skuValidation() ||
+    !namePriceTypeValidation() ||
+    !priceValidation() ||
+    !typeProductsValidation()
+  )
+    return false;
 
   const sendFormData = new FormData(this);
 

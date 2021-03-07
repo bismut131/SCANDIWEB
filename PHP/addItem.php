@@ -42,7 +42,9 @@ error_reporting(E_ALL);
 
    if(count($model->getProductFromBase($sku)) != 0) {
       $model->showAlert('Product with this SKU exists');
-   } 
+   } else {
+      echo "Product added";
+   }
 
    $model->AddProduct($item);
 

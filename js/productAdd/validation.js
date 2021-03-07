@@ -1,10 +1,11 @@
 "use strict";
 
-let check = true;
+const sku = document.querySelector("#sku");
+const name = document.querySelector("#Name");
+const price = document.querySelector("#price");
+const type = document.querySelector("#type-switcher");
 
 (function () {
-  const sku = document.querySelector("#sku");
-
   const form = document.querySelector(".needs-validation");
 
   form.addEventListener(
@@ -12,7 +13,13 @@ let check = true;
     function (event) {
       getProductsFromBase().then(function (data) {
         for (const item of data) {
-          if (sku.value === item["sku"] || !checkValidity()) {
+          if (
+            sku.value === item["sku"] ||
+            !skuValidation() ||
+            !namePriceTypeValidation() ||
+            !priceValidation() ||
+            !typeProductsValidation()
+          ) {
             event.preventDefault();
             event.stopPropagation();
             form.classList.add("was-validated");
@@ -26,31 +33,48 @@ let check = true;
   );
 })();
 
-function checkValidity() {
-  const name = document.querySelector("#Name");
-  const price = document.querySelector("#price");
-  const type = document.querySelector("#type-switcher");
-
-  if (sku.value.length > 9 || sku.value.length === 0) {
+function skuValidation() {
+  console.log(sku);
+  if (sku.value.length > 9) {
     const feedback = document.querySelector(".feedback");
     feedback.textContent = '"SKU must be less than 9 charachters!"';
-    check = false;
+    return false;
+  } else {
+    const feedback = document.querySelector(".feedback");
+    feedback.textContent = "";
+    return true;
   }
+}
 
-  if (name.value.length === 0 || price.value.length === 0 || type.value === "")
-    check = false;
+function namePriceTypeValidation() {
+  console.log(name, price, type);
+  if (
+    sku.value.length === 0 ||
+    name.value.length === 0 ||
+    price.value.length === 0 ||
+    type.value === ""
+  )
+    return false;
+  else return true;
+}
 
+function priceValidation() {
+  console.log(price);
   if (parseFloat(price.value) < 0 || isNaN(parseFloat(price.value))) {
     const feedback = document.getElementsByClassName("feedback")[1];
     feedback.textContent = '"Please, provide the data of indicated type"';
-    check = false;
+    return false;
   } else {
     const feedback = document.getElementsByClassName("feedback")[1];
     feedback.textContent = "";
+    return true;
   }
+}
 
+function typeProductsValidation() {
   if (type.value === "DVD") {
     const size = document.querySelector("#size");
+    console.log(size);
     if (
       size.value.length === 0 ||
       parseFloat(size.value) < 0 ||
@@ -58,8 +82,8 @@ function checkValidity() {
     ) {
       const feedback = document.getElementsByClassName("feedback")[2];
       feedback.textContent = '"Please, provide the data of indicated type"';
-      check = false;
-    }
+      return false;
+    } else return true;
   } else if (type.value === "BOOK") {
     const weight = document.querySelector("#weight");
     if (
@@ -69,8 +93,8 @@ function checkValidity() {
     ) {
       const feedback = document.getElementsByClassName("feedback")[2];
       feedback.textContent = '"Please, provide the data of indicated type"';
-      check = false;
-    }
+      return false;
+    } else return true;
   } else if (type.value === "FURNITURE") {
     const height = document.querySelector("#height");
     const width = document.querySelector("#width");
@@ -89,9 +113,7 @@ function checkValidity() {
     ) {
       const feedback = document.getElementsByClassName("feedback")[2];
       feedback.textContent = '"Please, provide the data of indicated type"';
-      check = false;
-    }
+      return false;
+    } else return true;
   }
-
-  return check;
 }
