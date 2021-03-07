@@ -7,40 +7,34 @@
   form.addEventListener(
     "submit",
     function (event) {
-      if (
-        // getProductsFromBase().then(function (data) {
-        //   for (const item of data) {
-        //     console.log(sku.value, item["sku"]);
-        //     if (sku.value === item["sku"]) {
-        //       console.log("YES");
-        //       return true;
-        //     }
-        //   }
-        // }) ||
-        !checkValidity()
-      ) {
-        event.preventDefault();
-        event.stopPropagation();
-        form.classList.add("was-validated");
-        console.log("MARI");
-      } else {
+      // if (
+      getProductsFromBase().then(function (data) {
+        for (const item of data) {
+          console.log(sku.value, item["sku"]);
+          if (sku.value === item["sku"] || !checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+            form.classList.add("was-validated");
+            console.log("MARI");
+            return false;
+          }
+        }
         window.location.replace(host + "/index.html");
-      }
+      });
+      // }) ||
+      // !checkValidity()
+      // ) {
+      //   event.preventDefault();
+      //   event.stopPropagation();
+      //   form.classList.add("was-validated");
+      //   console.log("MARI");
+      // } else {
+      //   window.location.replace(host + "/index.html");
+      // }
     },
     true
   );
 })();
-
-console.log(
-  getProductsFromBase().then(function (data) {
-    for (const item of data) {
-      if (sku.value === item["sku"]) {
-        console.log("YES");
-      }
-    }
-    return Promise["PromiseResult"];
-  })
-);
 
 function checkValidity() {
   const name = document.querySelector("#Name");

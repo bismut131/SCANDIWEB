@@ -8,5 +8,3 @@ async function getProductsFromBase() {
   });
   return await response.json();
 }
-
-const ProductlistItems = getProductsFromBase();
