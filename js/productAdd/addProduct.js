@@ -8,10 +8,8 @@ addItemForm.addEventListener("submit", function (e) {
     !priceValidation() ||
     !typeProductsValidation() ||
     !addItemForm.checkValidity()
-  ) {
-    console.log("YES");
+  )
     return false;
-  }
 
   const sendFormData = new FormData(this);
 

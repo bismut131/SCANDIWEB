@@ -13,7 +13,6 @@ const type = document.querySelector("#type-switcher");
     function (event) {
       getProductsFromBase().then(function (data) {
         for (const item of data) {
-          console.log(sku.value, item["sku"]);
           if (
             !skuValidation() ||
             !priceValidation() ||
