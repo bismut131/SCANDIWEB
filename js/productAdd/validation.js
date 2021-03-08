@@ -12,26 +12,33 @@ const type = document.querySelector("#type-switcher");
     "submit",
     function (event) {
       getProductsFromBase().then(function (data) {
+        event.preventDefault();
+
+        let check = true;
         for (const item of data) {
-          if (
-            !skuValidation() ||
-            !priceValidation() ||
-            !typeProductsValidation() ||
-            !form.checkValidity() ||
-            sku.value === item["sku"]
-          ) {
-            console.log(
-              skuValidation(),
-              priceValidation(),
-              typeProductsValidation(),
-              form.checkValidity()
-            );
-            event.preventDefault();
-            event.stopPropagation();
-            form.classList.add("was-validated");
-            return false;
+          if (sku.value === item["sku"]) {
+            check = false;
+            break;
           }
         }
+
+        if (
+          !skuValidation() ||
+          !priceValidation() ||
+          !typeProductsValidation() ||
+          !form.checkValidity() ||
+          !check
+        ) {
+          console.log(
+            skuValidation(),
+            priceValidation(),
+            typeProductsValidation(),
+            form.checkValidity()
+          );
+          form.classList.add("was-validated");
+          return false;
+        }
+
         window.location.replace(host + "/index.html");
       });
     },
@@ -63,7 +70,7 @@ function skuValidation() {
 // }
 
 function priceValidation() {
-  if (parseFloat(price.value) < 0 || isNaN(parseFloat(price.value))) {
+  if (parseFloat(price.value) < 0 || isNaN(price.value)) {
     const feedback = document.getElementsByClassName("feedback")[1];
     feedback.textContent = '"Please, provide the data of indicated type"';
     return false;
@@ -80,7 +87,7 @@ function typeProductsValidation() {
     if (
       size.value.length === 0 ||
       parseFloat(size.value) < 0 ||
-      isNaN(parseFloat(size.value))
+      isNaN(size.value)
     ) {
       const feedback = document.getElementsByClassName("feedback")[2];
       feedback.textContent = '"Please, provide the data of indicated type"';
@@ -91,12 +98,12 @@ function typeProductsValidation() {
     if (
       weight.value.length === 0 ||
       parseFloat(weight.value) < 0 ||
-      isNaN(parseFloat(weight.value))
+      isNaN(weight.value)
     ) {
       const feedback = document.getElementsByClassName("feedback")[2];
       feedback.textContent = '"Please, provide the data of indicated type"';
       return false;
-    } else return true;
+    }
   } else if (type.value === "FURNITURE") {
     const height = document.querySelector("#height");
     const width = document.querySelector("#width");
@@ -105,17 +112,17 @@ function typeProductsValidation() {
     if (
       height.value.length === 0 ||
       parseFloat(height.value) < 0 ||
-      isNaN(parseFloat(height.value)) ||
+      isNaN(height.value) ||
       width.value.length === 0 ||
       parseFloat(width.value) < 0 ||
-      isNaN(parseFloat(width.value)) ||
+      isNaN(width.value) ||
       length.value.length === 0 ||
       parseFloat(length.value) < 0 ||
-      isNaN(parseFloat(length.value))
+      isNaN(length.value)
     ) {
       const feedback = document.getElementsByClassName("feedback")[2];
       feedback.textContent = '"Please, provide the data of indicated type"';
       return false;
-    } else return true;
+    }
   }
 }

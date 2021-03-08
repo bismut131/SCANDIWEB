@@ -34,7 +34,7 @@ error_reporting(E_ALL);
       $height = $_POST["height"];
       $width = $_POST["width"];
       $length = $_POST["length"];
-      $dimension = $height . 'x' . $width . 'x' . $height;
+      $dimension = $height . 'x' . $width . 'x' . $length;
       $item = new Furniture ($sku, $name, $price, $type, $dimension);
    }
 
@@ -44,8 +44,9 @@ error_reporting(E_ALL);
       $model->showAlert('Product with this SKU exists');
    } else {
       echo "Product added";
+      $model->AddProduct($item);
    }
 
-   $model->AddProduct($item);
+   
 
 ?>
