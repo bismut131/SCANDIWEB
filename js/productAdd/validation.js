@@ -40,14 +40,10 @@ const type = document.querySelector("#type-switcher");
 })();
 
 function skuExists(data) {
-  console.log(data);
   for (const item of data) {
     if (sku.value === item["sku"]) {
-      console.log(sku.value, item["sku"]);
       const feedback = document.querySelector(".feedback");
-      console.log(feedback);
       feedback.textContent = '"SKU alrady exists in Productlist"';
-      console.log(feedback.textContent);
       return false;
     }
   }
