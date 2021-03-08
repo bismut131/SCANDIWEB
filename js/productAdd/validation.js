@@ -14,25 +14,18 @@ const type = document.querySelector("#type-switcher");
       getProductsFromBase().then(function (data) {
         event.preventDefault();
 
-        let check = true;
-        for (const item of data) {
-          if (sku.value === item["sku"]) {
-            check = false;
-            break;
-          }
-        }
-
         if (
           !skuValidation() ||
           !priceValidation() ||
           !typeProductsValidation() ||
-          !form.checkValidity() ||
-          !check
+          !skuExists(data) ||
+          !form.checkValidity()
         ) {
           console.log(
             skuValidation(),
             priceValidation(),
             typeProductsValidation(),
+            skuExists(data),
             form.checkValidity()
           );
           form.classList.add("was-validated");
@@ -45,6 +38,21 @@ const type = document.querySelector("#type-switcher");
     true
   );
 })();
+
+function skuExists(data) {
+  console.log(data);
+  for (const item of data) {
+    if (sku.value === item["sku"]) {
+      console.log(sku.value, item["sku"]);
+      const feedback = document.querySelector(".feedback");
+      console.log(feedback);
+      feedback.textContent = '"SKU alrady exists in Productlist"';
+      console.log(feedback.textContent);
+      return false;
+    }
+  }
+  return true;
+}
 
 function skuValidation() {
   if (sku.value.length > 9) {
@@ -103,7 +111,7 @@ function typeProductsValidation() {
       const feedback = document.getElementsByClassName("feedback")[2];
       feedback.textContent = '"Please, provide the data of indicated type"';
       return false;
-    }
+    } else return true;
   } else if (type.value === "FURNITURE") {
     const height = document.querySelector("#height");
     const width = document.querySelector("#width");
@@ -123,6 +131,6 @@ function typeProductsValidation() {
       const feedback = document.getElementsByClassName("feedback")[2];
       feedback.textContent = '"Please, provide the data of indicated type"';
       return false;
-    }
+    } else return true;
   }
 }
