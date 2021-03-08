@@ -13,13 +13,20 @@ const type = document.querySelector("#type-switcher");
     function (event) {
       getProductsFromBase().then(function (data) {
         for (const item of data) {
+          console.log(sku.value, item["sku"]);
           if (
-            sku.value === item["sku"] ||
             !skuValidation() ||
-            !namePriceTypeValidation() ||
             !priceValidation() ||
-            !typeProductsValidation()
+            !typeProductsValidation() ||
+            !form.checkValidity() ||
+            sku.value === item["sku"]
           ) {
+            console.log(
+              skuValidation(),
+              priceValidation(),
+              typeProductsValidation(),
+              form.checkValidity()
+            );
             event.preventDefault();
             event.stopPropagation();
             form.classList.add("was-validated");
@@ -34,7 +41,6 @@ const type = document.querySelector("#type-switcher");
 })();
 
 function skuValidation() {
-  console.log(sku);
   if (sku.value.length > 9) {
     const feedback = document.querySelector(".feedback");
     feedback.textContent = '"SKU must be less than 9 charachters!"';
@@ -46,20 +52,18 @@ function skuValidation() {
   }
 }
 
-function namePriceTypeValidation() {
-  console.log(name, price, type);
-  if (
-    sku.value.length === 0 ||
-    name.value.length === 0 ||
-    price.value.length === 0 ||
-    type.value === ""
-  )
-    return false;
-  else return true;
-}
+// function namePriceTypeValidation() {
+//   console.log(name, price, type);
+//   if (
+//     sku.value.length === 0 ||
+//     name.value.length === 0 ||
+//     price.value.length === 0 ||
+//     type.value === ""
+//   )
+//     return false;
+// }
 
 function priceValidation() {
-  console.log(price);
   if (parseFloat(price.value) < 0 || isNaN(parseFloat(price.value))) {
     const feedback = document.getElementsByClassName("feedback")[1];
     feedback.textContent = '"Please, provide the data of indicated type"';
@@ -74,7 +78,6 @@ function priceValidation() {
 function typeProductsValidation() {
   if (type.value === "DVD") {
     const size = document.querySelector("#size");
-    console.log(size);
     if (
       size.value.length === 0 ||
       parseFloat(size.value) < 0 ||

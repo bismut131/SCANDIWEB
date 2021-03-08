@@ -5,11 +5,13 @@ addItemForm.addEventListener("submit", function (e) {
 
   if (
     !skuValidation() ||
-    !namePriceTypeValidation() ||
     !priceValidation() ||
-    !typeProductsValidation()
-  )
+    !typeProductsValidation() ||
+    !addItemForm.checkValidity()
+  ) {
+    console.log("YES");
     return false;
+  }
 
   const sendFormData = new FormData(this);
 
